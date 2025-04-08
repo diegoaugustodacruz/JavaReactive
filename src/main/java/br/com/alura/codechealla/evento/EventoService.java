@@ -1,4 +1,4 @@
-package br.com.alura.codechealla;
+package br.com.alura.codechealla.evento;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

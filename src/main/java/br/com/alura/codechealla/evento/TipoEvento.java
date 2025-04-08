@@ -1,4 +1,4 @@
-package br.com.alura.codechealla;
+package br.com.alura.codechealla.evento;
 
 public enum TipoEvento {
 
