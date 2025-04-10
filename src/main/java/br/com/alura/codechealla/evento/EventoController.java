@@ -50,6 +50,7 @@ public class EventoController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> excluir(@PathVariable Long id){
         return service.excluir(id);
     }
