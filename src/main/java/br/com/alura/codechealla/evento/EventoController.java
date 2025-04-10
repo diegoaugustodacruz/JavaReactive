@@ -1,5 +1,6 @@
 package br.com.alura.codechealla.evento;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -36,7 +37,13 @@ public class EventoController {
         return service.obterPorId(id);
     }
 
+    @GetMapping("/{id}/traduzir/{idioma}")
+    public Mono<String> obterTraducao(@PathVariable Long id, @PathVariable String idioma){
+        return service.obterTraducao(id, idioma);
+    }
+
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<EventoDTO> cadastrar(@RequestBody EventoDTO dto){
         return service.cadastrar(dto)
                 .doOnSuccess(e -> eventoSink.tryEmitNext(e));

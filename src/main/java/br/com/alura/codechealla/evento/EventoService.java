@@ -1,5 +1,6 @@
 package br.com.alura.codechealla.evento;
 
+import br.com.alura.codechealla.translate.webclient.TraducaoTexto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -60,6 +61,13 @@ public class EventoService {
 
         return repository.findByTipo(tipoEvento)
                 .map(EventoDTO::toDTO);
+
+    }
+
+    public Mono<String> obterTraducao(Long id, String idioma) {
+
+        return repository.findById(id)
+                .flatMap(e -> TraducaoTexto.obterTraducao(e.getDescricao(), idioma));
 
     }
 }
